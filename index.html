@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1220">
+  <title>SurakshaAI — Think Before You Click</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand-mark" aria-hidden="true">🛡️</div>
+    <div><h1>SurakshaAI</h1><p>Think Before You Click</p></div>
+    <button id="clearHistory" class="ghost small" type="button">Clear history</button>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <span class="eyebrow">YOUR DIGITAL SAFETY ASSISTANT</span>
+      <h2>Pause. Check. Stay safe.</h2>
+      <p>Check suspicious messages and links for warning signs. Results are guidance, not a guarantee.</p>
+      <div class="privacy-note"><span>🔒</span> Checks run in your browser. History stays on this device.</div>
+    </section>
+
+    <nav class="tabs" aria-label="Checker type">
+      <button class="tab active" data-tab="message" type="button">✉️ Message check</button>
+      <button class="tab" data-tab="link" type="button">🔗 Link check</button>
+      <button class="tab" data-tab="history" type="button">🕘 History <span id="historyCount" class="count">0</span></button>
+    </nav>
+
+    <section id="messagePanel" class="panel">
+      <label for="messageInput">Paste a suspicious message</label>
+      <textarea id="messageInput" rows="7" maxlength="6000" placeholder="Example: Congratulations! You won a prize. Pay a fee now to claim it..."></textarea>
+      <div class="helper-row"><span>Don't include passwords, OTPs, or private banking details.</span><span id="messageLength">0/6000</span></div>
+      <button id="checkMessage" class="primary" type="button">Analyse message</button>
+    </section>
+
+    <section id="linkPanel" class="panel hidden">
+      <label for="linkInput">Paste a suspicious URL</label>
+      <input id="linkInput" type="text" maxlength="2048" autocomplete="off" spellcheck="false" placeholder="https://example.com">
+      <p class="helper">We do not open the link. Basic checks run locally on this device.</p>
+      <button id="checkLink" class="primary" type="button">Check link</button>
+    </section>
+
+    <section id="resultPanel" class="panel result hidden" aria-live="polite">
+      <div class="result-head">
+        <div><span class="eyebrow">CHECK RESULT</span><h2 id="resultTitle">Analysis</h2></div>
+        <span id="riskBadge" class="risk medium">Review</span>
+      </div>
+      <p id="resultSummary"></p>
+      <h3>Why it was flagged</h3>
+      <ul id="findings"></ul>
+      <div class="advice"><strong>Safer next steps</strong><p id="resultAdvice"></p></div>
+      <p class="disclaimer">A low-risk result does not prove something is safe. Scams change constantly.</p>
+      <button id="checkAnother" class="secondary" type="button">Check another</button>
+    </section>
+
+    <section id="historyPanel" class="panel hidden">
+      <div class="section-heading"><div><span class="eyebrow">ON THIS DEVICE</span><h2>Recent checks</h2></div><button id="clearHistory2" class="ghost" type="button">Delete all</button></div>
+      <div id="historyList" class="history-list"></div>
+      <p id="emptyHistory" class="empty">No checks saved yet. Your future results will appear here.</p>
+    </section>
+
+    <footer>
+      <p><strong>SurakshaAI</strong> is an early prototype. It does not guarantee scam detection and is not affiliated with any bank, government, or payment provider.</p>
+      <p>If money has been lost in India, contact your bank/payment provider immediately and report suspected cyber fraud via <strong>1930</strong> or <strong>cybercrime.gov.in</strong>. Verify current reporting instructions through official channels.</p>
+    </footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
